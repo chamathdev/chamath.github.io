@@ -1,19 +1,144 @@
-<!DOCTYPE html>
 <html>
-    <script src='https://aframe.io/releases/0.9.0/aframe.min.js'></script>
+    <header>
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+        <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+		<!-- we import arjs version without NFT but with marker + location based support -->
+		<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+		<script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
+		<script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/magnific-popup.min.css" rel="stylesheet">
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/jquery.magnific-popup.min.js"></script>
+		<script
+      		type="application/javascript"
+      		src="https://hammerjs.github.io/dist/hammer.min.js"
+    	></script>
+		
+		<script>
+		
+		</script>
+		
 
-    <script src='https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js'></script>
-  <body style="margin : 0px; overflow: hidden;">
-    <a-scene embedded arjs=’sourceType: webcam; debugUIEnabled: false;’>
+        <style>
+            .arjs-loader {
+              height: 100%;
+              width: 100%;
+              position: absolute;
+              top: 0;
+              left: 0;
+              background-color: rgba(0, 0, 0, 0.8);
+              z-index: 9999;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          
+            .arjs-loader div {
+              text-align: center;
+              font-size: 1.25em;
+              color: white;
+            }
+			.buttons{
+			  display: flex;
+			  justify-content: center;
+			  align-items: center;
+			  position: absolute;
+			  bottom: 0;
+			  left: 0;
+			  width: 50%;
+			  height: 10em;
+			  z-index: 10;
+			}
+			.buttons2{
+			  display: flex;
+			  justify-content: right;
+			  align-items: right;
+			  position: absolute;
+			  bottom: 0;
+			  left: 0;
+			  width: 50%;
+			  height: 10em;
+			  z-index: 10;
+			}
+			.btnVideo{
+			  padding: 0.25em;
+			  border-radius: 5px;
+			  border: none;
+			  background: black;
+			  color: white;
+			  width: 35em;
+			  height: 2em;
+			}
+			.btnVideo2{
+			  padding: 0.25em;
+			  border-radius: 5px;
+			  border: none;
+			  background: black;
+			  color: white;
+			  width: 35em;
+			  height: 2em;
+			}
+			#headerPopup{
+			  width:75%;
+			  margin:0 auto;
+			}
+			#headerPopup iframe{
+			  width:100%;
+			  margin:0 auto;
+			}
+          </style>
+    </header>
+	
 
-        <a-marker preset='custom' type='pattern' preset='https://jeromeetienne.github.io/AR.js/data/images/HIRO.jpg'>
-        
-        <a-box position='0 1 0' material='opacity: 0.5; color: #F70087;'></a-box>
-        
-        </a-marker>
-        
-        <a-entity camera></a-entity>
-        
-        </a-scene>
-  </body>
+    <body style="margin : 0px; overflow: hidden;" >	 
+	 
+	  
+      <a-scene 
+	    embedded 
+		arjs = "sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960;"
+		renderer="antialias: true; logarithmicDepthBuffer: true; colorManagement: true; sortObjects: true;"
+		vr-mode-ui="enabled: false"
+		id="scene"
+		gesture-detector
+	  >
+	  <a-assets>
+	    <a-asset-item
+		  id="scene1"
+		  src="scene.gltf"
+		>
+		<!-- <a-asset-item id="obj-mtl" src="2.mtl"></a-asset-item> -->
+		<!-- <video crossorigin="anonymous" id="promotional" loop="false" src="video.mp4" type="video/mp4" preload="auto"  playsinline>
+		<img id="btn_start" src="button_start.png"> -->
+	  </a-assets>
+	  <a-marker
+	    type="pattern" 
+		preset="custom" 
+		url="pattern-marker.patt"
+		raycaster="objects: #helmet-model3; near: 0; far: 50000;"
+		emitevents="true"
+		cursor="fuse: false; rayOrigin: mouse;"
+		smooth="true" 
+		smoothCount="20" 
+		smoothTolerance="1.5" 
+		smoothThreshold="10"
+	  >
+	    <!-- <a-text value="Tap on 3D model to play video" rotation="268 0 0" position="0 0 1"></a-text>
+	    <a-video id="videoPlayer" src="#promotional" width="6" height="4" rotation="268 0 0" position="0 0 4"></a-video>
+		<a-entity
+		  clickhandler
+		  id="helmet-model3"
+		  gltf-model="#scene1"
+		  position="0 0 0"
+		  scale="0.05 0.05 0.05"
+		  gesture-handler
+        >
+		</a-entity> -->
+      </a-marker>
+	  <a-entity camera></a-entity>
+    </a-scene>
+
+    </body>
+
 </html>
