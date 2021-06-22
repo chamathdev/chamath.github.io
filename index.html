@@ -26,12 +26,9 @@
 
 <body style="margin : 0px; overflow: hidden;">
     <div style="position: fixed; width: 100%;margin: 0 auto; text-align: center; z-index: 99; top: 1%;">
-        <p>Version 8</p>
+        <p>Version 9</p>
     </div>
-    <a-scene embedded 
-	arjs = "sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960;"
-	renderer="antialias: true; logarithmicDepthBuffer: true; sortObjects: true;"
-	vr-mode-ui="enabled: false" >
+    <a-scene renderer="logarithmicDepthBuffer: true" embedded arjs>
         <a-assets>
             <a-asset-item id="helmet" src="untitled.gltf"></a-asset-item>
         </a-assets>
