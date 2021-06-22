@@ -25,14 +25,25 @@
         <a-assets>
             <a-asset-item id="helmet" src="untitled.gltf"></a-asset-item>
         </a-assets>
-        <a-marker preset="hiro">
+        <a-marker
+	    type="pattern" 
+		preset="custom" 
+		url="pattern-download.patt"
+		emitevents="true"
+		cursor="fuse: false; rayOrigin: mouse;"
+		smooth="true" 
+		smoothCount="60" 
+		smoothTolerance="2" 
+		smoothThreshold="20"
+	  >
 
         <a-entity position="0 0.5 0" gltf-model="#helmet" cube-env-map="path: assets/images/map/;
                         extension: png;
                         reflectivity: 0.5;"></a-entity>
         </a-marker>
 
-        <a-entity camera></a-entity>
+        <a-entity camera look-controls
+            orbit-controls="target: 0 0.5 0; minDistance: 0.5; maxDistance: 180; initialPosition: 0 5 15"></a-entity>
     </a-scene>
 
 </body>
